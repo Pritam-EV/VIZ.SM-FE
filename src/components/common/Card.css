@@ -1,0 +1,127 @@
+
+/* ============================================
+   CARD COMPONENT CSS
+   frontend/src/components/common/Card.css
+   ============================================ */
+
+.card {
+  background-color: var(--bg-primary);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding-lg);
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-base);
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   CARD VARIANTS
+   ============================================ */
+
+.card--outlined {
+  border: 1px solid var(--border-color);
+  box-shadow: none;
+}
+
+.card--outlined:hover {
+  border-color: var(--border-color-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+.card--elevated {
+  box-shadow: var(--shadow-lg);
+}
+
+.card--elevated:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+.card--flat {
+  box-shadow: none;
+  border: 1px solid var(--border-color-light);
+}
+
+/* ============================================
+   CARD SUBCOMPONENTS
+   ============================================ */
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-header-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+.card-body {
+  padding: 0;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
+}
+
+/* ============================================
+   CARD SIZES
+   ============================================ */
+
+.card--sm {
+  padding: var(--card-padding-md);
+}
+
+.card--lg {
+  padding: var(--card-padding-lg);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .card {
+    padding: var(--card-padding-md);
+    border-radius: var(--radius-xl);
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+
+  .card-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .card-footer button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}

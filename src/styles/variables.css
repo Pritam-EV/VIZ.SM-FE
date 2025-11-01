@@ -1,0 +1,296 @@
+/* frontend/src/styles/variables.css */
+/* Global CSS Variables - Design System */
+
+:root {
+  /* ============================================
+     PRIMARY & BRAND COLORS
+     ============================================ */
+  
+  --primary: #00C853;
+  --primary-dark: #00B447;
+  --primary-light: #E8F5E9;
+  --primary-lighter: #F1F8F5;
+  --primary-overlay: rgba(0, 200, 83, 0.1);
+  
+  /* ============================================
+     SEMANTIC COLORS
+     ============================================ */
+  
+  --success: #4CAF50;
+  --error: #F44336;
+  --warning: #FF9800;
+  --info: #2196F3;
+  
+  --success-light: #E8F5E9;
+  --error-light: #FFEBEE;
+  --warning-light: #FFF3E0;
+  --info-light: #E3F2FD;
+  
+  /* ============================================
+     NEUTRALS - TEXT COLORS
+     ============================================ */
+  
+  --text-primary: #212121;
+  --text-secondary: #757575;
+  --text-tertiary: #9E9E9E;
+  --text-disabled: #BDBDBD;
+  --text-inverse: #FFFFFF;
+  
+  /* ============================================
+     BACKGROUNDS
+     ============================================ */
+  
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #FAFAFA;
+  --bg-tertiary: #F5F5F5;
+  --bg-overlay: rgba(0, 0, 0, 0.5);
+  --bg-overlay-light: rgba(0, 0, 0, 0.1);
+  
+  /* ============================================
+     BORDERS & DIVIDERS
+     ============================================ */
+  
+  --border-color: #E0E0E0;
+  --border-color-light: #EEEEEE;
+  --divider-color: #F5F5F5;
+  --border-color-dark: #BDBDBD;
+  
+  /* ============================================
+     SHADOWS
+     ============================================ */
+  
+  --shadow-xs: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0px 8px 16px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0px 12px 24px rgba(0, 0, 0, 0.2);
+  --shadow-inset: inset 0px 1px 2px rgba(0, 0, 0, 0.05);
+  
+  /* ============================================
+     SIZING & SPACING SCALE
+     ============================================ */
+  
+  /* Micro spacing (small elements) */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+  --spacing-3xl: 48px;
+  --spacing-4xl: 64px;
+  
+  /* Component sizes */
+  --size-icon-sm: 16px;
+  --size-icon-md: 20px;
+  --size-icon-lg: 24px;
+  --size-icon-xl: 32px;
+  
+  /* ============================================
+     BORDER RADIUS
+     ============================================ */
+  
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+  --radius-full: 9999px;
+  
+  /* ============================================
+     TYPOGRAPHY SCALE
+     ============================================ */
+  
+  /* Font families */
+  --font-primary: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-mono: 'Courier New', 'Monaco', monospace;
+  
+  /* Font sizes */
+  --text-xs: 11px;
+  --text-sm: 12px;
+  --text-base: 14px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 28px;
+  --text-4xl: 32px;
+  
+  /* Line heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  --line-height-loose: 2;
+  
+  /* Font weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Letter spacing */
+  --letter-spacing-tight: -0.5px;
+  --letter-spacing-normal: 0px;
+  --letter-spacing-wide: 0.5px;
+  --letter-spacing-wider: 1px;
+  
+  /* ============================================
+     TRANSITIONS & ANIMATIONS
+     ============================================ */
+  
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 200ms ease-in-out;
+  --transition-slow: 300ms ease-in-out;
+  
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* ============================================
+     Z-INDEX SCALE
+     ============================================ */
+  
+  --z-hide: -1;
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-popover: 600;
+  --z-tooltip: 700;
+  --z-notification: 800;
+  
+  /* ============================================
+     BREAKPOINTS (for media queries)
+     ============================================ */
+  
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  
+  /* ============================================
+     CONTAINER SIZES
+     ============================================ */
+  
+  --container-sm: 540px;
+  --container-md: 720px;
+  --container-lg: 960px;
+  --container-xl: 1140px;
+  --container-2xl: 1320px;
+  
+  /* ============================================
+     DEVICE-SPECIFIC DISPLAYS
+     ============================================ */
+  
+  --device-serial-font-size: 14px;
+  --device-serial-letter-spacing: 2px;
+  --device-serial-padding: 8px 12px;
+  
+  /* ============================================
+     BUTTON SIZES
+     ============================================ */
+  
+  --btn-height-sm: 32px;
+  --btn-height-md: 40px;
+  --btn-height-lg: 48px;
+  --btn-padding-x-sm: 12px;
+  --btn-padding-x-md: 16px;
+  --btn-padding-x-lg: 24px;
+  
+  /* ============================================
+     INPUT SIZES
+     ============================================ */
+  
+  --input-height-sm: 32px;
+  --input-height-md: 40px;
+  --input-height-lg: 48px;
+  --input-padding: 12px 16px;
+  
+  /* ============================================
+     CARD PROPERTIES
+     ============================================ */
+  
+  --card-padding-sm: 12px;
+  --card-padding-md: 16px;
+  --card-padding-lg: 24px;
+  --card-radius: 16px;
+  --card-shadow: var(--shadow-md);
+  
+  /* ============================================
+     SPECIFIC COMPONENT SIZES
+     ============================================ */
+  
+  --badge-height: 24px;
+  --badge-padding: 4px 12px;
+  --badge-font-size: 12px;
+  
+  --status-indicator-size: 8px;
+  --status-indicator-lg: 12px;
+  
+  --header-height: 56px;
+  --sidebar-width: 280px;
+  --sidebar-width-collapsed: 80px;
+  
+  /* ============================================
+     TRANSITIONS FOR COMPONENTS
+     ============================================ */
+  
+  --input-focus-duration: var(--transition-base);
+  --button-hover-duration: var(--transition-fast);
+  --modal-animation-duration: var(--transition-base);
+}
+
+/* ============================================
+   DARK MODE (Optional future implementation)
+   ============================================ */
+
+/* Uncomment and modify when implementing dark mode
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: #FFFFFF;
+    --text-secondary: #B3B3B3;
+    --text-tertiary: #808080;
+    
+    --bg-primary: #121212;
+    --bg-secondary: #1E1E1E;
+    --bg-tertiary: #2C2C2C;
+    
+    --border-color: #3C3C3C;
+    --divider-color: #1E1E1E;
+  }
+}
+*/
+
+/* ============================================
+   HIGH CONTRAST MODE (Accessibility)
+   ============================================ */
+
+@media (prefers-contrast: more) {
+  :root {
+    --text-primary: #000000;
+    --text-secondary: #4A4A4A;
+    --primary: #008C3A;
+    --primary-dark: #005F2A;
+    --border-color: #000000;
+    --shadow-md: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ============================================
+   REDUCED MOTION MODE (Accessibility)
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-base: 0ms;
+    --transition-slow: 0ms;
+  }
+}
