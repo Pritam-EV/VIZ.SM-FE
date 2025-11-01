@@ -6,6 +6,7 @@
  * Card Component
  * Container component with shadow and spacing
  */
+import React from 'react';
 
 const Card = React.forwardRef(
   (
@@ -41,4 +42,4 @@ const Card = React.forwardRef(
 
 Card.displayName = 'Card';
 
-// export default Card;
+export default Card;

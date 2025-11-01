@@ -2,7 +2,7 @@
 // ============================================
 // frontend/src/components/common/Badge.jsx
 // ============================================
-
+import React from 'react';
 import './Badge.css';
 
 /**
@@ -40,5 +40,5 @@ const Badge = React.forwardRef(
 
 Badge.displayName = 'Badge';
 
-// export default Badge;
+export default Badge;
 

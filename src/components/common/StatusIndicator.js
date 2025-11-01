@@ -2,7 +2,7 @@
 // ============================================
 // frontend/src/components/common/StatusIndicator.jsx
 // ============================================
-
+import React from 'react';
 import './StatusIndicator.css';
 
 /**

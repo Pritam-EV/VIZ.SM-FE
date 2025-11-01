@@ -3,7 +3,7 @@
 // ============================================
 // frontend/src/components/common/Toast.jsx
 // ============================================
-
+import React from 'react';
 import { createPortal } from 'react-dom';
 import './Toast.css';
 
@@ -78,5 +78,5 @@ const Toast = React.forwardRef(
 
 Toast.displayName = 'Toast';
 
-// export default Toast;
+export default Toast;
 

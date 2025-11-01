@@ -1,7 +1,7 @@
 // frontend/src/pages/LoginPage.jsx
 
 import React, { useState } from 'react';
-import { Card, Input, Button } from '.../components/common';
+import { Card, Input, Button } from '../../components/common';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');

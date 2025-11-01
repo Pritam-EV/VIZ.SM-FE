@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { ThemeProvider } from './hooks/useTheme';
-import LoginPage from './pages/LoginPage';
+import LoginPage from './pages/auth/LoginPage';
 import './index.css';
 
 function App() {

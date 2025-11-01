@@ -2,7 +2,7 @@
 // ============================================
 // frontend/src/components/common/SerialDisplay.jsx
 // ============================================
-
+import React from 'react';
 import './SerialDisplay.css';
 
 /**
