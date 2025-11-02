@@ -1,0 +1,156 @@
+:root {
+  /* Tweak this value to change input+button height everywhere */
+  --control-height: 30px;          /* e.g., 42–52px is common */
+  --control-radius: 22px;          /* corner radius for inputs/buttons */
+}
+
+.login-split-root {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-split-top {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3.5vh;
+  padding-bottom: 2.5vh;
+}
+
+.login-split-logo-circle {
+  width: 15em;
+  height: 15em;
+  border-radius: 50%;
+  background: #062540;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1em;
+  box-shadow: 0 6px 32px 0 rgba(6,37,64,0.13);
+}
+
+.login-split-logo {
+  width: 5.8em;
+  height: 5.8em;
+  object-fit: contain;
+}
+
+.login-split-title {
+  font-size: 1.25em;
+  color: #062540;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.7em;
+  letter-spacing: 0.5px;
+}
+
+.login-split-bottom {
+  flex: 1;
+  width: 100vw;
+  background: #062540;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+    /* new: rounded top edge */
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+
+  /* optional polish */
+  box-shadow: 0 -8px 24px rgba(0,0,0,0.10);
+  overflow-y: auto;       /* avoids content being cut off on short screens */
+  scroll-padding-top: 16px;
+}
+
+
+.login-split-form {
+  width: 70vw;
+  max-width: 350px;
+  margin-top: 3vh;
+  margin-bottom: 10vh;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 2.3em 1.2em 1.2em 1.2em;
+  border-radius: 5em;
+  box-shadow: 0 0 40px rgba(0,0,0,0.10);
+}
+.login-split-heading {
+  color: #f1fdff;
+  font-size: 1.35em;
+  font-weight: 700;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+
+
+/* Make the wrapper (.input-field) the single visible box */
+.login-split-input .input-field {
+  height: var(--control-height) !important;
+  min-height: var(--control-height) !important;
+  padding: 0 2em !important;
+  border-radius: var(--control-radius) !important;
+    margin-bottom: 10px !important;   /* increase this value for more gap */
+  /* your existing box visuals */
+  background: #eef5f9 !important;
+  
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.9em;            /* if you show an icon; remove if not needed */
+}
+
+/* Make the native input invisible (no inner box) and fill the wrapper */
+.login-split-input .input-field input {
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+  color: #062540 !important;
+  font-size: 0.8em !important;
+}
+
+/* Placeholder color (optional) */
+.login-split-input .input-field input::placeholder {
+  color: #b8bfd2 !important;
+}
+
+/* Chrome/Safari autofill: paint the wrapper color so it still looks single-box */
+.login-split-input .input-field input:-webkit-autofill,
+.login-split-input .input-field input:-webkit-autofill:hover,
+.login-split-input .input-field input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #062540 !important;
+  -webkit-box-shadow: 0 0 0 999px #eef5f9 inset !important;
+  box-shadow: 0 0 0 999px #eef5f9 inset !important;
+  transition: background-color 9999s ease-out 0s !important;
+}
+
+/* Keep buttons matching input height (optional) */
+.login-split-form button {
+  height: var(--control-height) !important;
+  min-height: var(--control-height) !important;
+  border-radius: calc(var(--control-radius) + 6px) !important;
+}
+
+@media (max-width:600px) {
+  .login-split-logo-circle {
+    width: 10em; height: 10em;
+  }
+  .login-split-logo {
+    width: 3.4em; height: 3.4em;
+  }
+  .login-split-form {
+    padding: 2.1em 5vw 1.5em 5vw;
+    max-width: 96vw;
+    border-radius: 1.3em;
+  }
+}
