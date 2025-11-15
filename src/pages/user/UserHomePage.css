@@ -1,0 +1,466 @@
+/* ============================================================
+   USER HOME PAGE - REDESIGNED WITH EXACT COLORS & FONTS
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Colors from design */
+  --header-green-start: #A4E376;
+  --header-green-end: #89D957;
+  --dark-bg: #0A1F35;
+  --card-bg-start: #3D5A7A;
+  --card-bg-end: #0A1F35;
+  --text-white: #FFFFFF;
+  --text-green: #A4E376;
+  --accent-red: #FF3333;
+  --accent-green: #89D957;
+}
+.user-home-outer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background: var(--dark-bg);
+}
+/* ============ ROOT ============ */
+.user-home-root {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--dark-bg);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ============ HEADER ============ */
+.user-home-header {
+  width: 100%;
+  max-width: 500px; /* or your central container max-width */
+  margin: 0 auto;
+  background: linear-gradient(90deg, #89d957 0%, #c9e265 100%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 0.85rem 0.6rem;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.header-item {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.header-item.left,
+.header-item.right {
+  width: 4em;
+  justify-content: center;
+}
+
+.header-item.center {
+  flex: 1 1 auto;
+  justify-content: center;
+  text-align: center;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.user-home-menu-btn,
+.user-home-profile-btn {
+  background: none;
+  border: none;
+  color: #000000;
+  font-size: 2em;
+  cursor: pointer;
+  padding: 0.2em;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.user-home-greeting {
+  color: #000000;
+  font-size: 1.1em;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.user-home-menu-btn:hover,
+.user-home-profile-btn:hover {
+  transform: scale(1.12);
+  opacity: 0.85;
+}
+
+.user-home-menu-btn:active,
+.user-home-profile-btn:active {
+  transform: scale(0.95);
+}
+
+.user-home-greeting {
+  color: #000000;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+}
+
+/* ============ MAIN CONTAINER ============ */
+.user-home-container {
+  flex: 1;
+  width: 100%;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  overflow-y: auto;
+  padding-bottom: 1.5rem;
+}
+
+/* ============ CARDS ============ */
+.user-home-card {
+  width: 80%;
+  max-width: 280px;
+  height: 170px;
+  background: linear-gradient(180deg, var(--card-bg-start) 0%, var(--card-bg-end) 100%);
+  border-radius: 1.2rem;
+  padding: 1.2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  position: relative;
+  border: 1px solid rgba(187, 223, 161, 0.281);
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.card-link {
+  color: var(--text-green);
+  font-size: 0.6rem;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: opacity 0.2s;
+  text-transform: capitalize;
+}
+
+.card-link:hover {
+  opacity: 0.8;
+}
+
+.card-balance {
+  font-size: 0.75rem;
+  color: var(--text-green);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.balance-value {
+  color: var(--text-white);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* Card Serial/Content */
+.card-serial {
+  text-align: center;
+  color: var(--text-white);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  margin: 0.8rem 0;
+  margin-top: 4rem;      /* controls space above */
+  margin-bottom: 0.5rem; /* controls space below */
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  
+}
+
+.card-title {
+  text-align: left;
+  color: var(--text-white);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-top: 6rem;      /* controls space above */
+}
+.card-POOL {
+  text-align: left;
+  color: var(--text-white);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-top: 3rem;      /* controls space above */
+}
+
+
+/* ============ WALLET CARD ============ */
+.wallet-card {
+  background: linear-gradient(180deg, #424753 0%, #0a0d13 100%);
+}
+
+/* ============ DEVICE CARD ============ */
+.device-card {
+  background: linear-gradient(1800deg, #071b31 0%,  #27394b 100%);
+}
+
+/* ============ DEVICE STATUS ============ */
+.device-status {
+  position: absolute;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.device-status.online {
+  background-color: #00FF00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.device-status.offline {
+  background-color: #FF3333;
+  box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+}
+
+/* ============ ACTION BUTTONS ============ */
+.action-buttons {
+  width: 100%;
+  max-width: 340px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.action-btn {
+  background: linear-gradient(90deg, #89d957 0%, #c9e265 100%) !important;
+  color: #0A1F35 !important;
+  font-weight: 500 !important;
+  font-size: 0.75rem !important;
+  padding: 0.5rem 0.6rem !important;
+  border-radius: 0.6rem !important;
+  border: none !important;
+  min-height: 2.2rem !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  line-height: 1.2 !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 8px rgba(137, 217, 87, 0.2) !important;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(137, 217, 87, 0.35) !important;
+}
+
+.action-btn:active {
+  transform: translateY(0) !important;
+}
+
+/* ============ SECTION TITLE ============ */
+.section-title {
+  width: 100%;
+  max-width: 340px;
+  color: var(--text-white);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0.8rem 0 0.6rem 0;
+  padding: 0;
+  text-align: left;
+  letter-spacing: 0.02em;
+}
+
+/* ============ RESPONSIVE - MOBILE (320px - 480px) ============ */
+@media (max-width: 480px) {
+  .user-home-header {
+    padding: 0.9rem 1rem;
+    gap: 0.8rem;
+  }
+
+  .user-home-greeting {
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .user-home-container {
+    padding: 1rem 0.8rem;
+    gap: 1rem;
+  }
+
+  .user-home-card {
+    max-width: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .card-serial {
+    font-size: 1.3rem;
+    letter-spacing: 0.2em;
+        margin-top: 0.6rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .action-buttons {
+    max-width: 100%;
+    gap: 0.5rem;
+  }
+
+  .action-btn {
+    font-size: 0.7rem !important;
+    padding: 0.45rem 0.5rem !important;
+    min-height: 2rem !important;
+  }
+
+  .section-title {
+    max-width: 100%;
+    font-size: 0.9rem;
+    margin: 0.6rem 0 0.5rem 0;
+  }
+
+  .card-header {
+    margin-bottom: 0.9rem;
+  }
+
+  .card-link {
+    font-size: 0.7rem;
+  }
+
+  .card-balance {
+    font-size: 0.7rem;
+  }
+}
+
+/* ============ RESPONSIVE - TABLET (481px - 768px) ============ */
+@media (min-width: 481px) and (max-width: 768px) {
+  .user-home-card {
+    max-width: 100%;
+    padding: 1.3rem;
+  }
+
+  .action-buttons {
+    max-width: 100%;
+    gap: 0.8rem;
+  }
+
+  .action-btn {
+    font-size: 0.8rem !important;
+    padding: 0.6rem 0.7rem !important;
+    min-height: 2.3rem !important;
+  }
+
+  .card-serial {
+    font-size: 1.6rem;
+  }
+}
+
+/* ============ RESPONSIVE - LARGE DESKTOP (769px+) ============ */
+@media (min-width: 769px) {
+  .user-home-header {
+    padding: 1.2rem 2rem;
+  }
+
+  .user-home-container {
+    padding: 1.5rem 2rem;
+    gap: 1.5rem;
+  }
+
+  .user-home-card {
+    max-width: 380px;
+    padding: 1.4rem;
+  }
+
+  .card-serial {
+    font-size: 1.8rem;
+  }
+
+  .action-buttons {
+    max-width: 380px;
+    gap: 0.8rem;
+  }
+
+  .action-btn {
+    font-size: 0.85rem !important;
+    padding: 0.65rem 0.8rem !important;
+    min-height: 2.4rem !important;
+  }
+}
+
+/* ============ SCROLLBAR ============ */
+.user-home-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.user-home-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.user-home-container::-webkit-scrollbar-thumb {
+  background: rgba(164, 227, 118, 0.25);
+  border-radius: 3px;
+}
+
+.user-home-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(164, 227, 118, 0.4);
+}
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.user-home-card {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* ============ ACCESSIBILITY ============ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============ PRINT ============ */
+@media print {
+  .user-home-menu-btn,
+  .user-home-profile-btn,
+  .action-buttons,
+  .card-link {
+    display: none;
+  }
+}

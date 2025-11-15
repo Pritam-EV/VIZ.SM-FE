@@ -4,13 +4,19 @@
   "description": "React frontend for Smart Prepaid Meter Platform",
   "private": true,
   "dependencies": {
+    "dependency": "^0.0.1",
+    "html5-qrcode": "^2.3.8",
+    "jsqr": "^1.4.0",
+    "peer": "^1.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.15.0"
+    "react-qr-scanner": "^1.0.0-alpha.11",
+    "react-router-dom": "^6.15.0",
+    "recharts": "^3.4.1"
   },
   "devDependencies": {
-  "react-scripts": "^5.0.1"
-},
+    "react-scripts": "^5.0.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

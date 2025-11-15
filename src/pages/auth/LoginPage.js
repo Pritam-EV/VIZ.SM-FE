@@ -6,8 +6,14 @@ import './LoginPage.css';
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+
+const handleForgotPassword = (e) => {
+  e.preventDefault();
+  navigate('/forgot-password');
+};
+
 
   return (
     <div className="login-split-root">
@@ -15,16 +21,16 @@ export default function LoginPage() {
         <div className="login-split-logo-circle">
           <img src="/your-lightning-icon.svg" alt="logo" className="login-split-logo" />
         </div>
-        <div className="login-split-title">SMART METERING SOLUTION</div>
+        <div className="login-split-title">SMART ENERGY SOLUTIONS</div>
       </div>
       <div className="login-split-bottom">
         <div className="login-split-form">
           <span className="login-split-heading">Enter Login Credentials</span>
           <Input
-            placeholder="Email or Phone"
+            placeholder="Phone"
             className="login-split-input"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+            value={phone}
+            onChange={e => setPhone(e.target.value)}
             required
           />
           <Input
@@ -50,14 +56,17 @@ export default function LoginPage() {
             Login
           </Button>
 
-          <div className="login-split-forgot-wrap">
-            <a href="#" className="login-split-forgot">Forgot password?</a>
-          </div>
+          <p className="login-forgot">
+            <a href="#" onClick={handleForgotPassword}>
+              Forgot Password?
+            </a>
+          </p>
+
           <Button
             fullWidth
             style={{
               background: '#062540',
-              color: '#fff',
+              color: '#b5e142',
               border: '1.5px solid #b5e142',
               fontWeight: 600,
               borderRadius: '1.9em',
@@ -68,9 +77,12 @@ export default function LoginPage() {
           >
             Create an account
           </Button>
+          <div className="login-made-title">Made with ❤️ by</div>
+           <div className="login-company-title">Vjra Technologies</div>
         </div>
+        
       </div>
-      
+     
     </div>
     
   );

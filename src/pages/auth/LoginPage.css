@@ -5,19 +5,25 @@
 }
 
 .login-split-root {
-  min-height: 100vh;
   width: 100vw;
+  min-height: 100vh;
+  background-color: var(--dark-bg);
   display: flex;
   flex-direction: column;
+  font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow-x: hidden;
 }
 
 .login-split-top {
-  background: #fff;
+  width: 100%;
+  background: linear-gradient(90deg, #89d957 0%, #c9e265 100%);
+  padding: 2.5rem 1.5rem 3rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 3.5vh;
-  padding-bottom: 2.5vh;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .login-split-logo-circle {
@@ -28,6 +34,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+    margin-top: 4em;
   margin-bottom: 1em;
   box-shadow: 0 6px 32px 0 rgba(6,37,64,0.13);
 }
@@ -40,13 +47,27 @@
 
 .login-split-title {
   font-size: 1.25em;
-  color: #062540;
+  color: #061140;
   font-weight: 700;
   text-align: center;
   margin-bottom: 0.7em;
   letter-spacing: 0.5px;
 }
-
+.login-company-title {
+  font-size: 0.9em;
+  color: #a3e376fd;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+.login-made-title {
+  font-size: 0.9em;
+  color: #a3e376fd;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 12em;
+  letter-spacing: 0.5px;
+}
 .login-split-bottom {
   flex: 1;
   width: 100vw;
@@ -55,8 +76,7 @@
   justify-content: center;
   align-items: flex-start;
     /* new: rounded top edge */
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
+
 
   /* optional polish */
   box-shadow: 0 -8px 24px rgba(0,0,0,0.10);
@@ -96,7 +116,7 @@
   border-radius: var(--control-radius) !important;
     margin-bottom: 10px !important;   /* increase this value for more gap */
   /* your existing box visuals */
-  background: #eef5f9 !important;
+  background:transparent;
   
   display: flex !important;
   align-items: center !important;
@@ -115,13 +135,13 @@
   padding: 0 !important;
   margin: 0 !important;
   line-height: 1 !important;
-  color: #062540 !important;
-  font-size: 0.8em !important;
+  color: #eef7ff !important;
+  font-size: 0.9em !important;
 }
 
 /* Placeholder color (optional) */
 .login-split-input .input-field input::placeholder {
-  color: #b8bfd2 !important;
+  color: #dce6ff !important;
 }
 
 /* Chrome/Safari autofill: paint the wrapper color so it still looks single-box */

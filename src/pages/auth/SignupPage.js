@@ -5,8 +5,13 @@ import './SignupPage.css';
 
 export default function SignupPage() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
-    name: '',
+    firstname: '',
+    middlename: '',
+    lastname: '',
     email: '',
     phone: '',
     password: '',
@@ -18,11 +23,18 @@ export default function SignupPage() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSignup = (e) => {
-    e.preventDefault();
-    console.log('Signup data:', formData);
-    // TODO: Call your backend API here
-  };
+const handleSignup = (e) => {
+  e.preventDefault();
+  const { email, password, phone } = formData;
+  if (!email.trim() || !password.trim()) {
+    setError('Please enter email and password');
+    return;
+  }
+  // If successful, navigate to OTP verify page:
+  navigate('/verify-otp', { state: { phone: phone ? phone : '+91 9876543210' } });
+};
+
+  
 
   return (
     <div className="signup-page-root">
@@ -38,15 +50,31 @@ export default function SignupPage() {
       <div className="signup-page-bottom">
         <form className="signup-page-form" onSubmit={handleSignup}>
           <Input
-            placeholder="Full Name"
+            placeholder="First Name*"
             className="signup-input"
-            name="name"
-            value={formData.name}
+            name="firstname"
+            value={formData.firstname}
+            onChange={handleChange}
+            required
+            
+          />
+                    <Input
+            placeholder="Middle Name"
+            className="signup-input"
+            name="middlename"
+            value={formData.middlename}
+            onChange={handleChange}
+          />
+                    <Input
+            placeholder="Last Name*"
+            className="signup-input"
+            name="lastname"
+            value={formData.lastname}
             onChange={handleChange}
             required
           />
           <Input
-            placeholder="Email Address"
+            placeholder="Email Address*"
             type="email"
             className="signup-input"
             name="email"
@@ -55,7 +83,7 @@ export default function SignupPage() {
             required
           />
           <Input
-            placeholder="Phone Number"
+            placeholder="Phone Number*"
             className="signup-input"
             name="phone"
             value={formData.phone}
@@ -63,7 +91,7 @@ export default function SignupPage() {
             required
           />
           <Input
-            placeholder="Password"
+            placeholder="Password*"
             type="password"
             className="signup-input"
             name="password"
@@ -72,7 +100,7 @@ export default function SignupPage() {
             required
           />
           <Input
-            placeholder="Retype Password"
+            placeholder="Retype Password*"
             type="password"
             className="signup-input"
             name="retypePassword"
@@ -99,7 +127,7 @@ export default function SignupPage() {
 
           <div className="signup-links">
             <p>
-              Have an account?{' '}
+              Already have an account?{' '}
               <span
                 onClick={() => navigate('/login')}
                 className="signup-link"
@@ -108,7 +136,7 @@ export default function SignupPage() {
               </span>
             </p>
             <p>
-              Want to signup as a Partner?{' '}
+              Want to join as a Partner?{' '}
               <span
                 onClick={() => navigate('/partner-signup')}
                 className="signup-link"
