@@ -1,78 +1,120 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Input, Button } from '../../components/common';
-import './VerifyOTP.css';
+// src/pages/auth/VerifyOTP.js
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Input, Button } from "../../components/common";
+import "./VerifyOTP.css";
+import { PhoneAuthProvider, signInWithCredential } from "firebase/auth";
+import { auth } from "../../firebase";
 
 export default function VerifyOTP() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [otp, setOtp] = useState('');
-  const [error, setError] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('+91 9876543210');
+  const [otp, setOtp] = useState("");
+  const [error, setError] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [resendTimer, setResendTimer] = useState(0);
+  const [verificationId, setVerificationId] = useState("");
 
-  // Get phone number from login state if available
   useEffect(() => {
-    if (location.state?.phone) {
-      setPhoneNumber(location.state.phone);
+    if (location.state?.phoneNumber) {
+      setPhoneNumber(location.state.phoneNumber);
     }
+    const vid = sessionStorage.getItem("firebase_verificationId");
+    if (vid) setVerificationId(vid);
   }, [location]);
 
-  // Resend timer countdown
   useEffect(() => {
     if (resendTimer > 0) {
-      const timer = setTimeout(() => setResendTimer(resendTimer - 1), 1000);
+      const timer = setTimeout(() => setResendTimer((t) => t - 1), 1000);
       return () => clearTimeout(timer);
     }
   }, [resendTimer]);
 
   const handleOtpChange = (e) => {
     const value = e.target.value;
-    // Only allow digits
     if (/^\d*$/.test(value) && value.length <= 6) {
       setOtp(value);
-      setError('');
+      setError("");
     }
   };
 
-  const handleVerify = (e) => {
-    e.preventDefault();
+const handleVerify = async (e) => {
+  e.preventDefault();
+  setError("");
 
-    if (!otp.trim()) {
-      setError('Please enter OTP');
+  if (!otp.trim() || otp.length < 6) {
+    setError("Please enter the 6-digit OTP");
+    return;
+  }
+
+  try {
+    if (!verificationId) {
+      setError("Verification session missing. Please request OTP again.");
       return;
     }
 
-    if (otp.length !== 6) {
-      setError('OTP must be 6 digits');
+    // 1. Verify OTP with Firebase
+    const credential = PhoneAuthProvider.credential(verificationId, otp);
+    const userCred = await signInWithCredential(auth, credential);
+    
+    // 2. Get signup form data
+    const signupForm = sessionStorage.getItem("signup_form");
+    if (!signupForm) {
+      setError("Signup data missing. Please signup again.");
       return;
     }
 
-    console.log('Verifying OTP:', otp);
+    const formData = JSON.parse(signupForm);
+    
+    // 3. CALL BACKEND to create user in MongoDB
+    console.log("🔥 Calling backend /api/account/user-signup...");
+const backendResponse = await fetch('https://viz-sm-be.onrender.com/api/account/userSignUp', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    firstName: formData.firstname || 'User',
+    mobile: Number(phoneNumber.replace(/\D/g, '').slice(-10)),
+    email: formData.email || '',
+    password: formData.password,
+    aadhar: '',
+    pan: ''
+  })
+});
 
-    // TODO: Call your API to verify OTP
-    // If successful, navigate to home or next page:
-    navigate('/home');
+const backendData = backendResponse.ok ? {} : await backendResponse.json();
 
-    // If failed:
-    // setError('Invalid OTP. Please try again.');
-  };
+console.log("🔥 Backend response:", backendResponse.status, backendData);
 
-  const handleResendOtp = () => {
-    console.log('Resending OTP to:', phoneNumber);
-    setOtp('');
-    setError('');
-    setResendTimer(30); // 30 second countdown
-    // TODO: Call your API to resend OTP
+if (backendResponse.ok) {  // ✅ 204 is ok!
+  sessionStorage.removeItem("firebase_verificationId");
+  sessionStorage.removeItem("signup_form");
+  navigate("/home");
+} else {
+  setError(`Backend error: ${backendData.message || backendData.invalid || 'Failed to create account'}`);
+}
+
+
+  } catch (err) {
+    console.error("OTP verify error:", err);
+    setError("Invalid OTP or backend error. Try again.");
+  }
+};
+
+
+  const handleResendOtp = async () => {
+    setError("");
+    setOtp("");
+    setResendTimer(30);
+    // Best UX: go back to signup and click "Send OTP" to re-run recaptcha + send
+    setError("Please go back to the signup page and click Send OTP to resend.");
   };
 
   const handleBackToLogin = () => {
-    navigate('/login');
+    navigate("/login");
   };
 
   return (
     <div className="verify-otp-root">
-      {/* ============ TOP SECTION ============ */}
       <div className="verify-otp-top">
         <div className="verify-otp-icon">
           <i className="fas fa-lock"></i>
@@ -82,7 +124,6 @@ export default function VerifyOTP() {
         </p>
       </div>
 
-      {/* ============ BOTTOM SECTION ============ */}
       <div className="verify-otp-bottom">
         <form className="verify-otp-form" onSubmit={handleVerify}>
           <h2 className="verify-otp-heading">Verify OTP</h2>
@@ -121,14 +162,13 @@ export default function VerifyOTP() {
           <div className="verify-otp-footer">
             <p className="verify-otp-resend">
               Didn't receive OTP?{' '}
-              <button
-                type="button"
-                className={`verify-otp-resend-btn ${resendTimer > 0 ? 'disabled' : ''}`}
-                onClick={handleResendOtp}
+              <Button
+                className="verify-otp-back-link"
                 disabled={resendTimer > 0}
+                onClick={handleResendOtp}
               >
-                {resendTimer > 0 ? `Resend in ${resendTimer}s` : 'Resend OTP'}
-              </button>
+                {resendTimer > 0 ? `Resend OTP (${resendTimer}s)` : 'Resend OTP'}
+              </Button>
             </p>
 
             <a href="#" className="verify-otp-back-link" onClick={handleBackToLogin}>
